@@ -4,6 +4,23 @@ const divContainer = document.createElement("div");
 divContainer.classList.add("container");
 document.body.appendChild(divContainer);
 
+//make button to choose max px by px row and columns
+let inputBtnValue =  0;
+let x = 0;
+
+const btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+    inputBtnValue = Number(prompt("Choisi une valeur :", "O"));
+    x = inputBtnValue;
+});
+btn.addEventListener("click", () => {
+    divContainer.style.gridTemplateColumns = `repeat(${x}, auto)`;
+    divContainer.style.gridTemplateRows = `repeat(${x}, auto)`;
+})
+
+
+
+
 
 //create all the divs;
 for (i = 0; i < 256; i++) {
