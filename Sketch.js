@@ -14,15 +14,11 @@ btn.addEventListener("click", () => {
     x = inputBtnValue;
 });
 btn.addEventListener("click", () => {
-    divContainer.style.gridTemplateColumns = `repeat(${x}, auto)`;
-    divContainer.style.gridTemplateRows = `repeat(${x}, auto)`;
+    divContainer.style.gridTemplateColumns = `repeat(${x}, 20px)`;
+    divContainer.style.gridTemplateRows = `repeat(${x}, 20px)`;
 })
 
 
-
-
-
-//create all the divs;
 for (i = 0; i < 256; i++) {
     //create the div;
     let div = document.createElement("div");
@@ -33,4 +29,24 @@ for (i = 0; i < 256; i++) {
     div.onmouseover = () => div.classList.add("hover")
     div.onmouseleave = () => div.classList.remove("hover")
 }
+
+
+
+
+
+
+//create all the divs;
+btn.addEventListener("click", () => {
+    for (i = 0; i < x * x; i++) {
+    //create the div;
+    let div = document.createElement("div");
+    //add the div inside the container;
+    divContainer.appendChild(div);
+    div.classList.add("grid");
+    //add a hovering effect;
+    div.onmouseover = () => div.classList.add("hover")
+    div.onmouseleave = () => div.classList.remove("hover")
+}
+})
+
 
