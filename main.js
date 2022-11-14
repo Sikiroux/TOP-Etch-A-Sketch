@@ -89,6 +89,7 @@ function changeLaye() {
         }
         hoverOnElement();
         hoverOffElement();
+        draw();
     })
    
 }
@@ -101,8 +102,20 @@ function changeCssLayout() {
     let size = 600 / (inputValue * inputValue)
     let divs = document.querySelectorAll(".grid");
     btn.addEventListener("click", () => {
-        divContainer.style.gridTemplateColumns = `repeat(${inputValue}, minmax(${size}, 1fr))`
-        divContainer.style.gridTemplateRows= `repeat(${inputValue}, minmax(${size}, 1fr))`
+        divContainer.style.gridTemplateColumns = `repeat(${inputValue}, minmax(0, 1fr))`
+        divContainer.style.gridTemplateRows= `repeat(${inputValue}, minmax(0, 1fr))`
     })
 }
 changeCssLayout();
+
+//A function to draw while on click 
+
+function draw() {
+    const paint = document.querySelectorAll(".grid");
+    paint.forEach(div => div.addEventListener("mousedown", () => {
+        div.classList.remove("hover");
+        div.classList.add("colored");
+    }))
+}
+
+draw();
