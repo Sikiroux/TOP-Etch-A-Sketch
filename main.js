@@ -7,22 +7,36 @@ function createGrid () {
 }
 createGrid();
 
-//A function that create the divs
+//A function that create the div
+let x = 0;
 function createGridElement() {
     for (i = 0; i < 256; i++) {
         let div = document.createElement("div");
         divContainer.appendChild(div);
         div.classList.add("grid");
     }
+    x = 256;
 }
 createGridElement();
 
 //A function to remove the current grid to let place for the new one
 function removeGrid() {
-    for (i = 0; i < 256; i++) {
-        let element = document.querySelector(".grid");
-        element.remove();
+    //Check wether x is equal to 256 so that the grid doesn't try to delete 256 element
+    //all the time;
+    if (x == 256) {
+        for (i = 0; i < 256; i++) {
+            let element = document.querySelector(".grid");
+            element.remove();
+        }
+    } else {
+        for (i = 0; i < x; i++) {
+            let element = document.querySelector(".grid");
+            element.remove();
+        }
     }
+    
+    
+    
 }
 
 //A function wich change the color on hover;
@@ -61,6 +75,7 @@ function getValue() {
 }
 getValue();
 
+
 //A function that verify the value of the input
 function checkValue() {
     const btn = document.querySelector("button");
@@ -87,9 +102,12 @@ function changeLaye() {
             divContainer.appendChild(div);
             div.classList.add("grid");
         }
+        x = inputValue * inputValue;
+        //Need to call function here so that they work with different grid size;
         hoverOnElement();
         hoverOffElement();
         draw();
+        fills();
     })
    
 }
@@ -119,16 +137,17 @@ function draw() {
 }
 draw();
 
-function fill() {
-    let fill = document.createElement("button");
+//A function to fill all div using a button;
+let fill = document.createElement("button");
     fill.classList.add("Fill");
     document.body.appendChild(fill);
-
     fill.textContent = "Fill"
+function fills() {
+    
     const gridElement = document.querySelectorAll(".grid");
     gridElement.forEach(div => fill.addEventListener("click", () => {
         div.classList.remove("hover");
         div.classList.add("colored");
     }))
 }
-fill();
+fills();
