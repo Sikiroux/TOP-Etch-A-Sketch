@@ -17,6 +17,14 @@ function createGridElement() {
 }
 createGridElement();
 
+//A function to remove the current grid to let place for the new one
+function removeGrid() {
+    for (i = 0; i < 256; i++) {
+        let element = document.querySelector(".grid");
+        element.remove();
+    }
+}
+
 //A function wich change the color on hover;
 let divs = 0;
 function hoverOnElement() {
@@ -71,6 +79,7 @@ checkValue();
 function changeLaye() {
     let btn = document.querySelector("button")
     btn.addEventListener("click", () => {
+        removeGrid();
         for (i = 0; i < inputValue * inputValue; i++) {
             //create the div;
             let div = document.createElement("div");
@@ -78,8 +87,8 @@ function changeLaye() {
             divContainer.appendChild(div);
             div.classList.add("grid");
         }
-    hoverOnElement();
-    hoverOffElement();
+        hoverOnElement();
+        hoverOffElement();
     })
    
 }
