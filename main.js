@@ -117,5 +117,18 @@ function draw() {
         div.classList.add("colored");
     }))
 }
-
 draw();
+
+function fill() {
+    let fill = document.createElement("button");
+    fill.classList.add("Fill");
+    document.body.appendChild(fill);
+
+    fill.textContent = "Fill"
+    const gridElement = document.querySelectorAll(".grid");
+    gridElement.forEach(div => fill.addEventListener("click", () => {
+        div.classList.remove("hover");
+        div.classList.add("colored");
+    }))
+}
+fill();
