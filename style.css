@@ -1,8 +1,12 @@
 .container {
     display: grid;
-    width: 960px;
-    grid-template-columns: repeat(16, 20px);
-    grid-template-rows: repeat(16, 20px);
+    width: 600px;
+    height: 600px;
+    /* minmax(0, 1fr) allows the grid tracks to be as small as 0 but as large as 1fr, 
+    creating columns that will stay equal */
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+    grid-template-rows: repeat(16, minmax(0, 1fr));
+    margin: 0;
 }
 
 .grid {
@@ -12,4 +16,12 @@
 
 .hover {
     background-color:rgb(74, 173, 173);
+}
+
+.colored {
+    background-color: black;
+}
+
+.container .grid {
+    overflow: hidden;
 }
