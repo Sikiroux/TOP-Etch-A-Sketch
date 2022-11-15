@@ -8,6 +8,7 @@ function createGrid () {
 createGrid();
 
 //A function that create the div
+let paint = "";
 let x = 0;
 function createGridElement() {
     for (i = 0; i < 256; i++) {
@@ -16,10 +17,11 @@ function createGridElement() {
         div.classList.add("grid");
     }
     x = 256;
+    paint = document.querySelectorAll(".grid")
 }
 createGridElement();
 
-const paint = document.querySelectorAll(".grid")
+
 //A function to remove the current grid to let place for the new one
 function removeGrid() {
     //Check wether x is equal to 256 so that the grid doesn't try to delete 256 element
@@ -103,11 +105,11 @@ function changeLaye() {
             divContainer.appendChild(div);
             div.classList.add("grid");
         }
+        paint = document.querySelectorAll(".grid");
         x = inputValue * inputValue;
         //Need to call function here so that they work with different grid size;
         hoverOnElement();
         hoverOffElement();
-        draw();
         fills();
         clearElement();
         getBlack();
@@ -131,12 +133,13 @@ changeCssLayout();
 
 //A function to start drawing on click 
 
-
+/*
 function draw() {
     paint.forEach(div => div.addEventListener("click", () => {
         drawLine();
     }))
 }
+*/
 
 // A function that draw on hovering;
 
@@ -231,4 +234,4 @@ function getBlack() {
         console.log("hello")
     })
 }
-getBlack();
+getBlack()
