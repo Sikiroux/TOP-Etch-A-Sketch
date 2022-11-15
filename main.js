@@ -19,6 +19,7 @@ function createGridElement() {
 }
 createGridElement();
 
+const paint = document.querySelectorAll(".grid")
 //A function to remove the current grid to let place for the new one
 function removeGrid() {
     //Check wether x is equal to 256 so that the grid doesn't try to delete 256 element
@@ -108,8 +109,10 @@ function changeLaye() {
         hoverOffElement();
         draw();
         fills();
+        clearElement();
+        getBlack();
+        getEraser();
     })
-   
 }
 changeLaye();
 
@@ -126,24 +129,58 @@ function changeCssLayout() {
 }
 changeCssLayout();
 
-//A function to draw while on click 
+//A function to start drawing on click 
+
 
 function draw() {
-    const paint = document.querySelectorAll(".grid");
-    paint.forEach(div => div.addEventListener("mousedown", () => {
+    paint.forEach(div => div.addEventListener("click", () => {
+        drawLine();
+    }))
+}
+
+// A function that draw on hovering;
+
+function drawLine() {
+    paint.forEach(div => div.addEventListener("mouseover", () => {
         div.classList.remove("hover");
         div.classList.add("colored");
     }))
 }
-draw();
+
+function Eraser() {
+    paint.forEach(div => div.addEventListener("mouseover", () => {
+        div.classList.add("hover");
+        div.classList.remove("colored");
+    }))
+}
+
+/*
+function drawLine() {
+    paint.classList.remove("hover");
+    paint.classList.add("colored");
+}
+
+function activateLine() {
+    paint.forEach(div => div.addEventListener("mouseover", drawLine))
+}
+activateLine()
+*/
+
+// A function to stop drawing;
+
+//Creating a button container
+const btnContainer = document.createElement("div");
+btnContainer.classList.add("btnCont");
+document.body.appendChild(btnContainer);
+
 
 //A function to fill all div using a button;
 let fill = document.createElement("button");
     fill.classList.add("Fill");
-    document.body.appendChild(fill);
+    btnContainer.appendChild(fill);
     fill.textContent = "Fill"
+
 function fills() {
-    
     const gridElement = document.querySelectorAll(".grid");
     gridElement.forEach(div => fill.addEventListener("click", () => {
         div.classList.remove("hover");
@@ -151,3 +188,47 @@ function fills() {
     }))
 }
 fills();
+
+//A function to clear all colored grid element;
+let clear = document.createElement("button");
+clear.classList.add("clear");
+btnContainer.appendChild(clear);
+clear.textContent = "Clear";
+
+function clearElement() {
+    const gridElement = document.querySelectorAll(".grid");
+    gridElement.forEach(div => clear.addEventListener("click", () => {
+        div.classList.remove("colored");
+    }))
+}
+clearElement();
+
+//Create a button to activate the eraser
+let eraser = document.createElement("button");
+btnContainer.appendChild(eraser);
+eraser.classList.add("eraser");
+eraser.textContent = "Eraser"
+
+function getEraser() {
+    eraser.addEventListener("click", () => {
+        Eraser();
+        console.log("hello")
+
+    })
+}
+getEraser();
+
+
+//Create a button to activate the drawing
+let black = document.createElement("button");
+btnContainer.appendChild(black);
+black.classList.add("black");
+black.textContent = "Black";
+
+function getBlack() {
+    black.addEventListener("click", () => {
+        drawLine();
+        console.log("hello")
+    })
+}
+getBlack();
