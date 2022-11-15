@@ -70,6 +70,7 @@ let inputValue = 0;
 
 function getValue() {
     const btn = document.querySelector("button");
+    btn.classList.add("Value");
     inputValue = 0;
     btn.addEventListener("click", () => {
         inputValue = Number(prompt("Choisi un nombre en dessous ou égale à 64 :", 0))
@@ -215,7 +216,7 @@ eraser.textContent = "Eraser"
 function getEraser() {
     eraser.addEventListener("click", () => {
         Eraser();
-        console.log("hello")
+        //console.log("hello")
 
     })
 }
@@ -231,7 +232,7 @@ black.textContent = "Black";
 function getBlack() {
     black.addEventListener("click", () => {
         drawLine();
-        console.log("hello")
+        //console.log("hello")
     })
 }
 getBlack()

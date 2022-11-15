@@ -6,12 +6,16 @@
     creating columns that will stay equal */
     grid-template-columns: repeat(16, minmax(0, 1fr));
     grid-template-rows: repeat(16, minmax(0, 1fr));
-    margin: 0;
+    margin-top : 70px;
+    margin-bottom: 30px;
+    border: 10px inset rgb(92, 85, 85);
 }
 
 .grid {
     background-color: rgb(192, 182, 182);
-    border: 2px solid white;
+    border: 1px solid white;
+    margin: 0;
+    padding: 0;
 }
 
 .hover {
@@ -24,4 +28,50 @@
 
 .container .grid {
     overflow: hidden;
+}
+
+body {
+    background-color: rgb(51, 51, 51);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    background-color: rgb(12, 4, 4);
+    color: white;
+    box-shadow: 3px 5px rgb(39, 5, 5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    
+}
+
+.btnCont {
+    display: flex;
+    background-color: rgb(136, 133, 133);
+    padding: 12px 10px;
+    gap: 10px;
+    border-radius: 5px;
+    border: 5px outset;
+}
+
+.Value {
+
+}
+
+.title {
+    font-weight: bold;
+    font-size: 40px;
+    font-family: fantasy;
+    text-shadow: 2px 3px rgb(36, 11, 11);
+}
+
+.title-container {
+    background-color: darkgray;
+    padding: 0 10%;
+    margin-bottom: 2%;
+    box-shadow: 8px 8px rgb(36, 11, 11);
 }
